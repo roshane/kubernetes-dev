@@ -1,0 +1,20 @@
+version: '3'
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3-management
+    networks:
+      - developer
+    ports:
+      - '5672:5672'
+      - '15672:15672' 
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        max_attempts: 5   
+
+networks:
+  developer:
+    external:
+      name: developer

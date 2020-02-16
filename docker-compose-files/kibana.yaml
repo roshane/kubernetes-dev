@@ -1,0 +1,18 @@
+version: '3'
+services:
+  kibana:
+    container_name: kibana
+    image: docker.elastic.co/kibana/kibana:7.5.2
+    #links:
+    #  - "net-develop:elasticsearch"
+    networks:
+     - net-develop
+    ports:
+      - 5601:5601
+    environment:
+      SERVER_NAME: kibana
+
+networks:
+  net-develop:
+    external: 
+      name: net-develop    
